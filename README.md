@@ -1,5 +1,12 @@
 Simple wrapper around js-vat from John Gardner (http://www.braemoor.co.uk/software/vat.shtml)
 
+Added a function to check if a country can use a given VAT number (useful for forms):
+
+```
+var check = checkVATForGivenCountryCode(country_code, vat_number);
+// returns { valid_vat: true|false, valid_country: true|false }
+```
+
 ```
   
 Parameters:    toCheck - VAT number be checked. 
