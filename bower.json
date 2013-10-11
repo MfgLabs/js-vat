@@ -1,6 +1,6 @@
 {
   "name": "js-vat",
-  "version": "1.16-5",
+  "version": "1.16-6",
   "author" : "John Gardner (http://www.braemoor.co.uk/software/vat.shtml)",
   "main": "./lib/jsvat.js",
   "ignore": [
