@@ -2,26 +2,54 @@ Simple wrapper around js-vat from John Gardner (http://www.braemoor.co.uk/softwa
 
 Added a function to check if a country can use a given VAT number (useful for forms):
 
-```
-var check = checkVATForGivenCountryCode(country_code, vat_number);
-// returns { valid_vat: true|false, valid_country: true|false }
-```
+### function checkVATNumber (toCheck, country_code)
 
-```
-  
-Parameters:    toCheck - VAT number be checked. 
+This function checks the value of the parameter for a valid European VAT number and a given country code.
 
-This function checks the value of the parameter for a valid European VAT number. 
+Parameters:    
+  - myVATNumber: VAT number be checked.
+  - countryCode: (optional) two letters country code, to be matched against the VAt number.
 
-If the number is found to be invalid format, the function returns a value of false. Otherwise it 
-returns the VAT number re-formatted.
+Return:
+  - number: the re-formatted VAT number.
+  - valid_vat: if the number is valid in itself.
+  - valid_country: if the country of the VAT number matches the optional countryCode param.
   
-Example call:
+Usage:
+```javascript
   
-  if (checkVATNumber (myVATNumber)) 
+  var checkVATObject = checkVATNumber(myVATNumber, countryCode);
+  
+  if (checkVATObject.valid_country) 
+      alert ("VAT Number does match the country code")
+  else 
+      alert ("VAT number doesn't match the country code");
+
+  if (checkVATObject.valid_vat) 
       alert ("VAT number has a valid format")
   else 
       alert ("VAT number has invalid format");
+                    
+```
+
+### Examples
+
+```javascript
+checkVATNumber("FR 37 50 999 58 09")
+Object {valid_country: true, valid_vat: true, number: "FR37509995809"}
+
+checkVATNumber("FR 37 50 999 58 09", "FR")
+Object {valid_country: true, valid_vat: true, number: "FR37509995809"}
+
+checkVATNumber("FR 37 50 999 58 09", "XX")
+Object {valid_country: false, valid_vat: true, number: "FR37509995809"}
+
+checkVATNumber("XX 37 50 999 58 09", "XX")
+Object {valid_country: false, valid_vat: false, number: "XX37509995809"}
+
+checkVATNumber("XX 37 50 999 58 09", "FR")
+Object {valid_country: true, valid_vat: false, number: "XX37509995809"}
+
 ```
 
 ```
