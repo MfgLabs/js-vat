@@ -2,7 +2,7 @@ Simple wrapper around js-vat from John Gardner (http://www.braemoor.co.uk/softwa
 
 Added a function to check if a country can use a given VAT number (useful for forms):
 
-### function checkVATNumber (toCheck, country_code)
+### function checkVATNumber (myVATNumber, countryCode)
 
 This function checks the value of the parameter for a valid European VAT number and a given country code.
 
